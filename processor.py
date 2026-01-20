@@ -41,7 +41,10 @@ class TransactionProcessor:
 
     def _process_ted(self, bank_code, agency, account_number, amount):
         # --- integração simulada com banco para TED ---
-        print(f"[TED] Transferindo {amount} para banco {bank_code}-{agency}/{account_number}")
+        print(
+            f"[TED] Transferindo {amount} para banco "
+            f"{bank_code}-{agency}/{account_number}"
+        )
         return {"status": "pending", "provider": "LegacyBank"}
 
     def _process_boleto(self, payer_name, amount):
