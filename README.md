@@ -33,6 +33,11 @@ Sua solução deve tornar o código:
 - Mais **fácil de manter**
 - Mais **fácil de testar**
 - Mais **fácil de entender e usar**
+- Manter **compatível**, os testes existentes em `test_main.py` devem continuar passando sem alterações
+
+## Observação Importante
+
+A pasta `_libs` (`boleto.py`, `pix.py`, `ted.py`) deve ser tratada como uma biblioteca externa. **O conteúdo desses arquivos não deve ser modificado.**
 
 ## Exemplos de Payload do Swagger
 

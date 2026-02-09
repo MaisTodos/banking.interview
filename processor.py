@@ -1,3 +1,7 @@
+from _libs.boleto import Boleto
+from _libs.pix import Pix
+from _libs.ted import Ted
+
 class TransactionProcessor:
     def __init__(self, transaction_type, payload):
         self.transaction_type = transaction_type
@@ -36,15 +40,28 @@ class TransactionProcessor:
 
     def _process_pix(self, pix_key, amount, description):
         # --- integração simulada com provedor PIX ---
-        print(f"[PIX] Enviando pagamento para chave {pix_key}, valor {amount}")
-        return {"status": "ok", "provider": "BankPix"}
+        print(f"[PIX] Enviando pagamento para chave {pix_key}, valor {amount}. Descrição: {description}")
+        pix_gateway = Pix()
+        return pix_gateway.process(
+            pix_key=pix_key,
+            amount=amount,
+            description=description
+        )
 
     def _process_ted(self, bank_code, agency, account_number, amount):
         # --- integração simulada com banco para TED ---
         print(f"[TED] Transferindo {amount} para banco {bank_code}-{agency}/{account_number}")
-        return {"status": "pending", "provider": "LegacyBank"}
+        
+        ted_gateway = Ted()
+        return ted_gateway.executar(bank_code, agency, account_number, amount)
 
     def _process_boleto(self, payer_name, amount):
         # --- integração simulada com gateway de boletos ---
         print(f"[BOLETO] Emitindo boleto no valor {amount} para {payer_name}")
-        return {"status": "issued", "provider": "BoletoGateway"}
+
+        boleto_gateway = Boleto()
+        return boleto_gateway.pagar(
+            payer_name=payer_name,
+            amount=amount
+        )
+        
