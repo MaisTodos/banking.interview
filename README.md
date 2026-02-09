@@ -20,7 +20,6 @@ uv run fastapi dev
 
 ### Usando pip
 ```json
-uv pip compile pyproject.toml -o requirements.txt
 pip install -r requirements.txt
 fastapi dev
 ```
