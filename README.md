@@ -14,6 +14,10 @@ O foco é **design e boas práticas**, não regras reais de banco.
 ### Usando uv
 
 ```json
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```json
 uv sync
 uv run fastapi dev
 ```
